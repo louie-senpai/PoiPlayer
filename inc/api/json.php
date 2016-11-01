@@ -115,8 +115,13 @@ function get_jsons($id,$type){
 
 /*音乐搜索*/
 function get_search_jsons($input){
+    $poi = get_option('poi_options');
+    $search_num = $poi['searchnum'] ? $poi['searchnum'] : '20';
+    if($search_num >= 100){
+        $search_num = '100';
+    }
     $list = array();
-    $list = music_search($input);
+    $list = music_search($input, $search_num);
     $cd = POI_URL.'/build/images/cd-2.png';
     $search = '';
     if($list){

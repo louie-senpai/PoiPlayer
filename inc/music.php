@@ -48,7 +48,9 @@ function poi_demo(){
 }
 
 add_action('wp_footer', 'PoiPlayer_bar');
-function PoiPlayer_bar(){ ?>
+function PoiPlayer_bar(){ 
+  $poi = get_option('poi_options');
+  ?>
   <!-- POI PLAYER BAR -->
   <div id="poi-play-bar" class="poi-play-bar poi-c">
     <div class="poi-control">
@@ -73,14 +75,16 @@ function PoiPlayer_bar(){ ?>
     <div class="poi-list-title">
       <span class="poi-album-tiele"></span>
       <span class="poi-album-tags"></span>
-      <form action="<?php echo $_SERVER["REQUEST_URI"]; ?>" method="post">
+      <?php if($poi['searchide'] != '0') : ?>
+      <form action="<?php //echo $_SERVER["REQUEST_URI"]; ?>" method="post">
         <label>
         <input type="text" name="sname" id="sname" value="<?php echo isset($_POST['sname'])?$_POST['sname']:''; ?>"  placeholder="Search..." required />
         <input type="hidden" name="boxsearch_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
         <i class="fa fa-search"></i>
         </label>
       </form>
-      <span class="poi-list-close"><i class="fa fa-angle-double-down"></i></span>
+      <?php  endif; ?>
+      <span class="poi-list-close" style="<?php if($poi['searchide'] == '0') echo 'display: block' ?>"><i class="fa fa-angle-double-down"></i></span>
     </div>
     <div id="poi-playlist"><ul></ul></div>
     <div id="poi-lrc" class="poi-lrc-c">
@@ -96,7 +100,7 @@ function PoiPlayer_bar(){ ?>
     </div>
     <div class="czui czui-c"></div>
   </div>
-  <?php $poi = get_option('poi_options'); if(empty($_POST['poisearch_to'])){ ?>
+  <?php if(empty($_POST['poisearch_to'])){ ?>
   <?php $json = $poi['poimusic'] ? $poi['poimusic'] : poi_demo(); ?>
   <div id="music-json" class="music-json" style="display: none;">
     <script type="text/javascript">

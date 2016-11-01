@@ -129,9 +129,9 @@ function netease_mv($mvid){ //MV 失效！？
     return false;
 }
 
-function music_search($name){ //搜索解析
+function music_search($name,$num){ //搜索解析
 	// 歌曲 1 , 专辑 10 , 歌手 100 , 歌单 1000 , 用户 1002 , mv 1004 , 歌词 1006 , 主播电台 1009
-    $response = search_http($name,"1"); 
+    $response = search_http($name,$num,"1"); 
     //var_dump($response);
     if ($response['code'] == 200 && $response['result']) {
         $result = $response['result']['songs'];
@@ -231,7 +231,7 @@ function netease_http($type, $id){
 }
 
 
-function search_http($word, $type){
+function search_http($word, $num, $type){
 
     $url = "http://music.163.com/api/search/pc";
     //$url = "http://music.163.com/api/search/suggest/web";
@@ -239,7 +239,7 @@ function search_http($word, $type){
     $post_data = array(
         's' => $word,
         'offset' => '0',
-        'limit' => '60',
+        'limit' => $num,
         'type' => $type,
     );
     $referrer = "http://music.163.com/";

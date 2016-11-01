@@ -207,6 +207,9 @@
     right: 0;
     top: 1px;
 }
+.poi-list-title form.searchide{
+    display: none;
+}
 .poi-list-title form .fa-search{
     position: relative;
     font-size: 20px;
@@ -508,6 +511,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
+    background-color: #ffffff;
     box-shadow: 0 0 13px #000;
     border-right: 5px solid #222;
     z-index: 2;

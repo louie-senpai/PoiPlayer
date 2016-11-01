@@ -47,6 +47,8 @@ function poi_player_options_code(){ ?>
 	      <div class="poi-other">
 	        <input type="checkbox" name="poi_options[autoplay]" class="autoplay" value="0" <?php checked('0',$poi['autoplay']); ?> /><span>自动播放</span>
           <input type="checkbox" name="poi_options[shuffle]" class="shuffle" value="0" <?php checked('0',$poi['shuffle']); ?> /><span>随机播放</span>
+          <input type="checkbox" name="poi_options[searchide]" class="shuffle" value="0" <?php checked('0',$poi['searchide']); ?> /><span>关闭搜索</span>
+          <input type="text" name="poi_options[searchnum]" class="searchnum" value="<?php if($poi['searchnum'] < 100){echo $poi['searchnum'];}elseif($poi['searchnum'] > 100){echo '100';}else{echo '20';} ?>" size="2"><span> 歌曲搜索数量（Max = 100）</span>
 	      </div>
         <input type="submit" name="save" class="button" value="保存设置" />
       </form>
@@ -55,9 +57,12 @@ function poi_player_options_code(){ ?>
       }?>
       <hr/>
       <div class="poi-ps">
-      <p>关于音乐搜索功能： 需要主机开启fsockopen()函数，否则无法获取数据，另外可能存在主机IP被墙而无法播放歌曲的问题，大多出现在海外IP的站点。使用该功能在新建页面添加短代码 [PoiMusic] 即可。</p>
-      <p>与Poi Player(RC-1)版本冲突，不要同时启用（应该没人会这么做吧？）。</p>
-      <p>Poi Player 版本2.0.0 最后更新于2016.10.27 @Louie</p>
+      <p>歌单：http://music.163.com/#/playlist?id=<code>469469926</code>（数字即为歌单ID）</p>
+      <p>专辑：http://music.163.com/#/album?id=<code>2857009</code>（数字即为专辑ID）</p>
+      <p>以上两种作为类型的识别链接，自行到网易云音乐挑选歌单或专辑</p>
+      <p>关于音乐搜索功能： 需要主机开启fsockopen()函数，否则无法获取数据，另外可能存在主机IP被墙而无法播放歌曲的问题，大多出现在海外IP的站点。使用该功能在新建页面添加短代码<code>[PoiMusic]</code>即可。</p>
+      <hr>
+      <p>Poi Player 版本2.0.1 最后更新于2016.11.01 @Louie（累积熬夜天数无法估算并处于猝死边缘，每天沉溺于学习无法自拔）</p>
       </div>
     </div>
   </div>
