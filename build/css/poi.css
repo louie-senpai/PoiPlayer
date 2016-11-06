@@ -18,7 +18,7 @@
     font-weight:normal;
 }
 .poi-play-bar .enable{
-    color: #b9da0e !important;
+    color: #FE9600 !important;
 }
 .poi-play-bar i{
     cursor: pointer;
@@ -243,7 +243,7 @@
     padding: 4px 30px 4px 16px;
 }
 #poi-music-list #poi-playlist .playing{
-    color: #69d2e7;
+    color: #FE9600;
 }
 
 #poi-music-list #poi-playlist{
@@ -278,9 +278,9 @@
     opacity: .9;
 }
 #poi-music-list #poi-song-cover img{
-    width: 250px;
-    height: 250px;
-    max-width: 250px;
+    width: 246px;
+    height: 246px;
+    max-width: 246px;
     padding: 15px;
     background-color: #333;
     box-shadow: inset 0 0 6px #111;
@@ -310,7 +310,7 @@
     transform: rotate(-113deg);
 }
 #poi-music-list .czui-o{
-    transform: rotate(-80deg);
+    transform: rotate(-79deg);
 }
 
 @keyframes degs{
@@ -366,7 +366,7 @@
     opacity: .8;
 }
 .geci_attention{
-    color: #69d2e7;
+    color: #FE9600;
     transition: all 0.3s;
     opacity: 1;
 }
