@@ -6,7 +6,7 @@ WordPress Plugins
 
 ## 演示地址
 
-[Acool博客](https://www.coolest.cc/)  
+[Acool博客](http://iacool.com/)  
 
 ## 使用方法
 
