@@ -1,7 +1,7 @@
 # PoiPlayer
 WordPress Plugins
 
-又一款网易云外链播放器<br>
+又一款WordPress网易云外链音乐播放器插件<br>
 集成了音乐搜索功能，支持随机播放，进度条拖拉，支持Pjax或ajax站点全站播放。
 
 最新版本：2.0.1<br>
