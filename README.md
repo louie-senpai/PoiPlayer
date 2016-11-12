@@ -24,7 +24,7 @@ WordPress Plugins
 
 ### 外链工具
 
-新建页面添加短代码<code>[PoiMusic]<code>
+新建页面添加短代码<code>[PoiMusic]</code>
 
 ### 注意事项
 
