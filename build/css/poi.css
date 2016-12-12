@@ -1,0 +1,609 @@
+﻿@charset "utf-8";
+/* 
+ * Poi Player
+ * Design by Louie ( http://i94.me )
+ * Last updated 2016-10-27
+*/
+.poi-play-bar,
+.poi-play-bar div, 
+.poi-play-bar li,
+#poi-music-list div,
+#poi-music-list li,
+#poi-music-list form {
+    box-sizing: border-box;
+}
+.poi-play-bar h1,
+.poi-play-bar h2,
+.poi-play-bar h3,
+.poi-play-bar h4,
+.poi-play-bar h5,
+.poi-play-bar h6,
+.poi-play-bar p,
+.poi-play-bar span,
+.poi-play-bar a,
+.poi-play-bar i, {
+    font-size:100%;
+    font-weight:normal;
+}
+.poi-play-bar .enable{
+    color: #FE9600 !important;
+}
+.poi-play-bar i{
+    cursor: pointer;
+    width: 30px;
+    font-size: 16px;
+}
+#open-poi-player{
+    width: 30px;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #ddd;
+    text-align: center;
+    background-color: #222;
+}
+#open-poi-player i{
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+/*BAR -------------------------*/
+.poi-play-bar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 50px;
+    margin: 0 auto;
+    background-color: #333;/*#2c343f*/
+    box-shadow: 0px 0px 1px #111;
+    z-index: 9999999;
+    overflow: hidden;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.poi-control > div{
+    display: table-cell;
+    vertical-align: bottom;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #ddd;
+}
+.poi-control .rewind i,
+.poi-control .poiplay i,
+.poi-control .fastforward i{
+    font-size: 20px;
+    vertical-align: middle;
+}
+.poi-play-bar .poi-control{
+    display: table;
+    table-layout: fixed;
+    border-spacing: 0;
+    width: 100%;
+    padding-right: 35px;
+    font-family: PingFang SC,Hiragino Sans GB,Microsoft YaHei,STHeiti,WenQuanYi Micro Hei,Helvetica,Arial,sans-serif;
+}
+.poi-play-bar .poi-control .poi-progress{
+    width: auto;
+    padding: 0 10px;
+    vertical-align: top;
+    position: relative;
+    /*background: rgba(0,0,0,.5);*/
+    z-index: 0;
+}
+.poi-progress .poi-sider{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index: 0;
+    height: 50px;
+}
+.poi-progress .poi-loaded,
+.poi-progress .poi-pace{
+    position:absolute;
+    height:100%;
+    opacity:.7;
+    height: 50px;
+    cursor: pointer;
+}
+.poi-progress .poi-loaded{
+    background: rgba(255,255,255,.05);
+}
+.poi-progress .poi-pace{
+    background: #ffffff;
+    height: 50px;
+    opacity: .09;
+}
+.poi-progress .poi-sider a{
+    position:absolute;
+    top:-3px;
+    margin-left:-2.5px;
+    width:10px;
+    height:10px;
+    background:#fff;
+    opacity:0;
+    transition:opacity .3s;
+    -ms-border-radius:50%;
+    display: none;
+}
+.poi-progress .poi-song-title{
+    font-size: 14px;
+    color: #eee;
+    z-index: 2;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.poi-progress .poi-song-title span{
+    font-size: 12px;
+    line-height: 50px;
+}
+.poi-play-bar .poi-timer{
+    width: 90px;
+    color: #ddd;
+    font-size: 12px;
+}
+
+/* List -----------------------*/
+#poi-music-list{
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 49px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #333;
+    box-shadow: 0px 0px 3px #111;
+    /*border-radius: 5px 5px 0 0;*/
+    overflow: hidden;
+    color: #ddd;
+    z-index: 999999;
+    font-family: PingFang SC,Hiragino Sans GB,Microsoft YaHei,STHeiti,WenQuanYi Micro Hei,Helvetica,Arial,sans-serif;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.poi-music-list-c{
+    height: 0px;
+}
+.poi-music-list-o{
+    height: 308px;
+}
+#poi-music-list > div{
+    display: table-cell;
+    vertical-align: top;
+    width: auto;
+}
+#poi-music-list .poi-list-title{
+    position: relative;
+    padding: 2px 10px;
+    margin: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 38px;
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 0 0 1px #111;
+    background-color: #333;
+    display: inherit;
+    z-index: 999999;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.poi-list-title .poi-list-close{
+    font-size: 24px;
+    float: right;
+    line-height: 0;
+    padding: 0 4px 0 9px;
+    margin-top: 17px;
+    cursor: pointer;
+    display: none;
+}
+.poi-list-title form{
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 1px;
+}
+.poi-list-title form.searchide{
+    display: none;
+}
+.poi-list-title form i{
+    position: absolute;
+    font-size: 20px;
+    color: #ddd;
+    z-index: 0;
+    cursor: pointer;
+    right: 10px;
+}
+.poi-list-title form input{
+    width: 0;
+    font-size: 13px;
+    color: #ddd;
+    padding: 4px 16px;
+    outline: none;
+    border-radius: 50px;
+    border: 1px solid #333;
+    background-color: #333;
+    z-index: 1;
+    font-family: PingFang SC,Hiragino Sans GB,Microsoft YaHei,STHeiti,WenQuanYi Micro Hei,Helvetica,Arial,sans-serif;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+.poi-list-title form input:focus{
+    color: #ddd;
+    width: 260px;
+    border: 1px solid #444;
+    background-color: #444;
+    padding: 4px 30px 4px 16px;
+}
+#poi-music-list #poi-playlist .playing{
+    color: #FE9600;
+}
+
+#poi-music-list #poi-playlist{
+    width: 300px;
+}
+#poi-music-list #poi-playlist ul{
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    height: 270px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#poi-music-list #poi-playlist li{
+    padding: 6px 10px;
+    cursor: pointer;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 290px;
+}
+#poi-music-list #poi-playlist li:hover{
+    background-color: #222;
+}
+
+#poi-music-list #poi-lrc{
+    width: 100%;
+}
+
+#poi-music-list #poi-song-cover{
+    padding: 11px;
+    opacity: .9;
+}
+#poi-music-list #poi-song-cover img{
+    width: 246px;
+    height: 246px;
+    max-width: 246px;
+    padding: 15px;
+    background-color: #333;
+    box-shadow: inset 0 0 6px #111;
+    box-sizing: border-box;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+#poi-music-list .czui{
+    background-image: url(../images/cz.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 170px;
+    position: absolute;
+    right: 140px;
+    top: 50px;
+    transform-origin: center top;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+#poi-music-list .czui-c{
+    transform: rotate(-113deg);
+}
+#poi-music-list .czui-o{
+    transform: rotate(-79deg);
+}
+
+@keyframes degs{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+
+@-webkit-keyframes degs{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+.degs{
+    border-radius: 100%;
+    padding: 32px!important;
+    box-shadow: 0 0 12px #111!important;
+    animation: degs 30s infinite linear;
+    -webkit-animation: degs 30s infinite linear;
+}
+
+#poi-music-list #poi-playlist ul::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+    background-color: #eee !important;
+}
+#poi-music-list #poi-playlist ul::-webkit-scrollbar-thumb {
+    background-color: #222 !important;
+}
+#poi-music-list #poi-playlist ul::-webkit-scrollbar-track {
+    background-color: #444 !important;
+}
+
+
+/* LRC ------------------------*/
+#p-lrc{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: rgba(44, 52, 63, 0);
+    color: #ddd;
+    z-index: -2;
+    display: none;
+}
+#lrcWrap ul{
+    margin: 0;
+    margin-top: 24px;
+    background: none;
+    border:0;
+    color: #ddd;
+}
+#lrcWrap li{
+    font-size: 14px;
+    padding: 0;
+}
+.geci_moonlight{
+    opacity: .8;
+}
+.geci_attention{
+    color: #FE9600;
+    transition: all 0.3s;
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    #poi-music-list #poi-song-cover,
+    #poi-music-list .czui{
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    .poi-play-bar .poi-timer,
+    .poi-play-bar .shuffle-play,
+    .poi-play-bar .poi-volume,
+    #poi-music-list #poi-lrc,
+    #poi-music-list .poi-album-tags,
+    .poi-list-title form{
+        display: none;
+    }
+    .poi-list-title .poi-list-close{
+        display: block;
+    }
+    .poi-progress .poi-song-title,
+    #poi-music-list #poi-playlist,
+    #poi-music-list #poi-playlist ul,
+    #poi-music-list #poi-playlist li{
+        width: 100%;
+        display: block;
+    }
+    .poi-album-tiele{
+        display: inline-block;
+        width: 216px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+
+/* Music Search -----------------*/
+.poi-search-box{
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px 0 0;
+}
+.poi-search-box{
+    display: table;
+    table-layout: fixed;
+    border-spacing: 0;
+    width: 100%;
+}
+.poi-search-box form{
+    display: flex;
+}
+.poi-search-box input{
+    display: table-cell;
+    vertical-align: top;
+    font-size: 15px;
+    border: 1px solid #999;
+    text-shadow:none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: miranafont,"Hiragino Sans GB",STXihei,"Microsoft YaHei",SimSun,sans-serif;
+}
+.poi-search-box #mid {
+    background: none;
+    height: 40px;
+    width: 100%;
+    outline: none;
+    padding-left: 10px;
+}
+.poi-search-box #button{
+    width: 160px;
+    height: 40px;
+    background: none;
+    box-shadow: none;
+    margin-left: 15px;
+}
+.poi-search-box #button:hover{
+    background-color: #E67474;
+    border-color: #E67474;
+    color: #fff;
+}
+#poi-search-music-list{
+    width: 100%;
+    margin-bottom: 30%;
+}
+#list-music-song {
+    position: relative;
+    overflow: hidden;
+    max-height: 280px;
+    margin: 30px 0;
+    padding: 5px 0;
+    line-height: 1em;
+    box-sizing: border-box;
+    color: rgba(0,0,0,.6);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    z-index: 0;
+}
+#list-music-song ul{
+    list-style: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    float: left;
+    font-size: 12px;
+    line-height: 20px;
+}
+a#try-listen-play {
+    text-decoration:none;
+    color: #FE9600;
+}
+#list-music-song ul li{
+    padding: 6px 0 0;
+    overflow:hidden;
+    text-overflow:ellipsis; 
+    -o-text-overflow:ellipsis;
+    white-space:nowrap;
+    max-width:550px;
+}
+#list-music-song ul li i{
+    font-size: 14px;
+    padding-right: 5px;
+}
+.list-song-info-title{
+    font-weight: 600;
+}
+#list-music-song .try-listen{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 22px;
+    text-shadow: rgba(225, 225, 225, 1) 0px 0px 5px;
+}
+.list-music-cover .song-cd-cover{
+    float: left;
+    width: 120px;
+    height: 120px;
+    margin: -5px 70px -5px 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 0 13px #000;
+    border-right: 5px solid #222;
+    z-index: 2;
+}
+.list-music-cover .song-cd-pan {
+    width: 110px;
+    height: 110px;
+    background-image: url(./build/images/cd-2.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    position: absolute;
+    left: 60px;
+    top: 6px;
+    z-index: -1;
+}
+
+.poi-search-help p{
+    font-size: 12px;
+}
+
+@font-face {font-family: "poifont";
+  src: url('../fonts/iconfont.eot?t=1481545557376'); /* IE9*/
+  src: url('../fonts/iconfont.eot?t=1481545557376#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont.woff?t=1481545557376') format('woff'), /* chrome, firefox */
+  url('../fonts/iconfont.ttf?t=1481545557376') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/iconfont.svg?t=1481545557376#poifont') format('svg'); /* iOS 4.1- */
+}
+
+.poifont {
+  font-family:"poifont" !important;
+  font-size:20px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.poi-sousuochaxun:before { content: "\e600"; }
+
+.poi-shuaxin:before { content: "\e612"; }
+
+.poi-guanlianfujian:before { content: "\e601"; }
+
+.poi-chuangkoufangda:before { content: "\e610"; }
+
+.poi-tupian:before { content: "\e602"; }
+
+.poi-shipin:before { content: "\e603"; }
+
+.poi-huhuan:before { content: "\e604"; }
+
+.poi-shengyin:before { content: "\e605"; }
+
+.poi-jingyin:before { content: "\e606"; }
+
+.poi-fanhui2:before { content: "\e607"; }
+
+.poi-jinru2:before { content: "\e608"; }
+
+.poi-daohangliebiao:before { content: "\e609"; }
+
+.poi-shouqi:before { content: "\e60a"; }
+
+.poi-zhankai:before { content: "\e60b"; }
+
+.poi-bofang:before { content: "\e60c"; }
+
+.poi-zanting:before { content: "\e60d"; }
+
+.poi-tingzhi:before { content: "\e611"; }
+
+.poi-shangyishou:before { content: "\e60e"; }
+
+.poi-kuaijin:before { content: "\e60f"; }
+
+
+
