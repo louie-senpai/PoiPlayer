@@ -1,7 +1,7 @@
 <?php
 
 //外链搜索工具
-add_shortcode('PoiMusic', 'Poi_music_link_shortcode');
+//add_shortcode('PoiMusic', 'Poi_music_link_shortcode');
 function Poi_music_link_shortcode( $atts, $content = null ) {
 	if(is_page()){
 		return search_music();

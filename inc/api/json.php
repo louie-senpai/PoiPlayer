@@ -93,7 +93,7 @@ function get_jsons($id,$type){
                                 'title' =>$v['song_title'], 
                                 'artist' => $v['song_author'], 
                                 'cover' => $v['song_cover'].'?param=300x300', 
-                                'mp3' => $v['song_src'], 
+                                'id' => $v['song_id'], 
                                 'lrc' => $lrc
                                 ), 
                             'tags' => $has_tag

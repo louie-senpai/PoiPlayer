@@ -12,6 +12,7 @@ define('POI_VERSION', '2.0.3');
 define('POI_URL', plugins_url('', __FILE__));
 define('POI_PATH', dirname(__FILE__));
 
+require POI_PATH . '/inc/api/Meting.php';
 require POI_PATH . '/inc/api/json.php';
 require POI_PATH . '/inc/api/get.php';
 require POI_PATH . '/inc/search.php';

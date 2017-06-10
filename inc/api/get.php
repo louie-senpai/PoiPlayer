@@ -153,34 +153,6 @@ function encrypted_id($dfsid) {
 	return $code;
 }
 
-function netease_mv($mvid){ //MV 失效！？
-
-    $response = netease_http(2, $mvid);
-
-    if ($response["code"] == 200 && $response["data"]) {
-
-        $result = $response['data']['brs'];
-        $mv_720 = $result['720']; //画质 240 480 720 1080
-        $mv_1080 = $result['1080'];
-        $mv_720 = str_replace("http://v4", "http://v2", $mv_720);
-        $mv_1080 = str_replace("http://v4", "http://v2", $mv_1080);
-        $mv_name = $response['data']['name'];
-        $mv_artist = $response['data']['artistName'];
-        $mv_cover = $response['data']['cover'];
-        $mv_info[] = array(
-        "song_src" => $mv_720,
-        "1080" => $mv_1080,
-        "song_title" => $mv_name,
-        "song_author" => $mv_artist,
-        "song_cover" => $mv_cover
-    	);
-
-    	return $mv_info;
-    }
-
-    return false;
-}
-
 
 function netease_http($type, $id){
 	$header = array(
@@ -234,50 +206,4 @@ function netease_http($type, $id){
 }
 
 
-function search_http($word, $num, $type){
 
-    $url = "http://music.163.com/api/search/pc";
-    //$url = "http://music.163.com/api/search/suggest/web";
-    //$url = "http://music.163.com/api/search/get/";
-    $post_data = array(
-        's' => $word,
-        'offset' => '0',
-        'limit' => $num,
-        'type' => $type,
-    );
-    $referrer = "http://music.163.com/";
-    $URL_Info = parse_url($url);
-    $values = array();
-    $result = '';
-    $request = '';
-    foreach ($post_data as $key => $value) {
-        $values[] = "$key=" . urlencode($value);
-    }
-    $data_string = implode("&", $values);
-    if (!isset($URL_Info["port"])) {
-        $URL_Info["port"] = 80;
-    }
-    $request .= "POST " . $URL_Info["path"] . " HTTP/1.1\n";
-    $request .= "Host: " . $URL_Info["host"] . "\n";
-    $request .= "Referer: $referrer\n";
-    $request .= "Content-type: application/x-www-form-urlencoded\n";
-    $request .= "Content-length: " . strlen($data_string) . "\n";
-    $request .= "Connection: close\n";
-    $request .= "Cookie: " . "appver=1.5.0.75771;\n";
-    $request .= "\n";
-    $request .= $data_string . "\n";
-    $fp = fsockopen($URL_Info["host"], $URL_Info["port"]);
-    fputs($fp, $request);
-    $i = 1;
-    while (!feof($fp)) {
-        if ($i >= 12) {
-            $result .= fgets($fp);
-        } else {
-            fgets($fp);
-            $i++;
-        }
-    }
-    fclose($fp);
-    $result = json_decode($result,true);
-    return $result;
-}

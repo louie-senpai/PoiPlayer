@@ -4,8 +4,13 @@ WordPress Plugins
 又一款WordPress网易云外链音乐播放器插件<br>
 集成了音乐搜索功能，支持随机播放，进度条拖拉，支持Pjax或ajax站点全站播放。
 
-最新版本：2.0.3<br>
+最新版本：2.0.4<br>
 更新摘要：<br>
+- 2017-06-10<br>
+修复MP3链接失效问题。<br>
+移除音乐搜索功能。<br>
+鸣谢：https://github.com/metowolf/Meting <br>
+
 - 2016-12-12<br>
 支持SSL，不怕丢失小绿锁了。<br>
 替换图标库，体积缩小90%。<br>

@@ -12,35 +12,18 @@ function poi_scripts() {
 
 function poi_demo(){
   //默认数据
-  $demo = '{
-      "album":"Poi Player",
-      "CoverImg":"http://p4.music.126.net/mnDq8QSVGXMJ5xE1cPnRXA==/1398578796580197.jpg",
-      "list":{
-          "title":"Paganini Rocks",
-          "artist":"Au Revoir Simone,Robortom",
-          "cover":"http://p4.music.126.net/bjES9QPCI7v-huGP3KFqsw==/2532175279095094.jpg",
-          "mp3":"http://p2.music.126.net/9a7uxkfw6cqyDlkWy3gUpA==/2087972581156596.mp3",
-          "lrc":"'.POI_URL.'/inc/lrc.php?id=4274795"
-      },
-      "tags":[
-          "欧美",
-          "下午茶"
-      ]
-  },{
-      "album":"Poi Player",
-      "CoverImg":"http://p4.music.126.net/mnDq8QSVGXMJ5xE1cPnRXA==/1398578796580197.jpg",
-      "list":{
-          "title":"Ruby Feat. Aori (Alwone remix)",
-          "artist":"Alwone,Kaivaan",
-          "cover":"http://p4.music.126.net/mnDq8QSVGXMJ5xE1cPnRXA==/1398578796580197.jpg",
-          "mp3":"http://p2.music.126.net/v7iz903w7dRs-t78GBrO4Q==/1405175866329111.mp3",
-          "lrc":"'.POI_URL.'/inc/lrc.php?id=409646326"
-      },
-      "tags":[
-          "欧美",
-          "下午茶"
-      ]
-  },';
+  $demo = '
+  {
+    "album":"蜜汁路易",
+    "list":{
+        "title":"Smash",
+        "artist":"Tone Damli Aaberge",
+        "cover":"https://p1.music.126.net/n_zH2qFGHsiAORK9t-mgpw==/6670737046271416.jpg?param=300x300",
+        "id":"29378602",
+        "lrc":"'.POI_URL.'/inc/lrc.php?id=29378602"
+    },
+    "tags":"暂无标签"
+}';
 
   return $demo;
 }
@@ -79,7 +62,7 @@ function PoiPlayer_bar(){
     <div class="poi-list-title">
       <span class="poi-album-tiele"></span>
       <span class="poi-album-tags"></span>
-      <?php if($poi['searchide'] != '0') : ?>
+      <?php if($poipalyer === 123456) : ?>
       <form action="<?php //echo $_SERVER["REQUEST_URI"]; ?>" method="post">
         <label>
         <i class="poifont">&#xe600;</i>
@@ -112,12 +95,14 @@ function PoiPlayer_bar(){
     var playlist = [<?php echo $json; ?>],
     mautoplay = "<?php echo $autoplay;?>",
     mshuffle = "<?php echo $poi['shuffle'];?>",
-    boxsearch = false;
+    boxsearch = false,
+    geturl = "<?php echo POI_URL.'/'; ?>";
     <?php }else{ ?>
     var playlist = [<?php echo get_search_jsons($sname); ?>],
     mautoplay = false,
     mshuffle = false,
-    boxsearch = "ok";
+    boxsearch = "ok",
+    geturl = "<?php echo POI_URL.'/'; ?>";
     <?php } ?>
     </script>
   </div>
