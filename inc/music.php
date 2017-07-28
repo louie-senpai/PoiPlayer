@@ -2,12 +2,9 @@
 
 add_action('wp_enqueue_scripts', 'poi_scripts');
 function poi_scripts() {
-    wp_register_style('poi-player', POI_URL . '/build/css/poi.css', array(), POI_VERSION, 'all');
-    wp_register_script('poi-libs', POI_URL . '/build/js/player-base.min.js',  array('jquery') , POI_VERSION ,true);
-    wp_register_script('poi-player', POI_URL . '/build/js/poi.min.js', array('jquery') , POI_VERSION ,true);
-    wp_enqueue_style('poi-player');
-    wp_enqueue_script('poi-libs');
-    wp_enqueue_script('poi-player');
+    wp_enqueue_style('poi-player', POI_URL . '/build/css/poi.css', array(), POI_VERSION, 'all');
+    wp_enqueue_script('poi-libs', POI_URL . '/build/js/player-base.min.js',  array('jquery') , POI_VERSION ,true);
+    wp_enqueue_script('poi-player', POI_URL . '/build/js/poi.min.js', array('jquery') , POI_VERSION ,true);
 }
 
 function poi_demo(){
@@ -70,7 +67,7 @@ function PoiPlayer_bar(){
         <input type="hidden" name="boxsearch_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>" />
         </label>
       </form>
-      <?php  endif; ?>
+      <?php endif; ?>
       <span class="poi-list-close" style="<?php if($poi['searchide'] == '0') echo 'display: block' ?>"><i class="poifont">&#xe60b;</i></span>
     </div>
     <div id="poi-playlist"><ul></ul></div>

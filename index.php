@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: Poi Player
-Plugin URI: http://i94.me/
-Description: 又一款网易云外链播放器，集成了音乐搜索，支持ajax全站播放
-Author: Louie
-Version: 2.0.4
-Author URI: http://i94.me/
+Plugin URI: https://www.cssplus.org
+Description: 又一款网易云外链播放器。
+Author: 蜜汁路易(louie)
+Version: 2.0.5
+Author URI: https://www.cssplus.org
 */
 
-define('POI_VERSION', '2.0.4');
+define('POI_VERSION', '2.0.5');
 define('POI_URL', plugins_url('', __FILE__));
 define('POI_PATH', dirname(__FILE__));
 

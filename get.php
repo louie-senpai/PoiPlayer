@@ -6,7 +6,7 @@ $id = (int)$_GET['id'];
 if ($id) {
 	$API = new Meting('netease');
 	$data = $API->format(true)->url($id);
-	$arr = [];
+	$arr = array();
 	$arr = json_decode($data);
 	$url = str_replace('http://m7', 'https://m8', $arr->url);
 	echo '{"url":"'.$url.'"}';

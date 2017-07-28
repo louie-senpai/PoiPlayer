@@ -20,7 +20,7 @@ function poi_setting(){
 function poi_player_options_code(){ ?>
   <div id="poi-player-body">
     <div class="poi-player-center">
-      <h2>Poi Player Setting</h2>
+      <h2>POI PLAYER V2.0.5</h2>
       <div class="poi-search-box">
         <form action="<?php echo $_SERVER["REQUEST_URI"]; ?>" method="post">
           <select id="music-type" name="select">
@@ -60,9 +60,9 @@ function poi_player_options_code(){ ?>
       <div class="poi-ps">
       <p>歌单：http://music.163.com/#/playlist?id=<code>469469926</code>（数字即为歌单ID）</p>
       <p>专辑：http://music.163.com/#/album?id=<code>2857009</code>（数字即为专辑ID）</p>
-      <p>以上两种作为类型的识别链接，自行到网易云音乐挑选歌单或专辑</p>
+      <p>以上两种作为类型的识别链接，自行到网易云音乐挑选歌单或专辑；如果歌曲不能正常不播放，请重新获取歌单数据，检查PHP版本不低于5.5。</p>
       <hr>
-      <p>Poi Player 版本<?php echo POI_VERSION; ?> 最后更新于2016.12.12 @Louie</p>
+      <p>最后更新于2017.07.28，插件相关信息：https://www.cssplus.org</p>
       </div>
     </div>
   </div>
