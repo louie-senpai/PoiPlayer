@@ -62,7 +62,7 @@ function poi_player_options_code(){ ?>
       <p>专辑：http://music.163.com/#/album?id=<code>2857009</code>（数字即为专辑ID）</p>
       <p>以上两种作为类型的识别链接，自行到网易云音乐挑选歌单或专辑；如果歌曲不能正常不播放，请重新获取歌单数据，检查PHP版本不低于5.5。</p>
       <hr>
-      <p>最后更新于2017.07.28，插件相关信息：https://www.cssplus.org</p>
+      <p>最后更新于2017.11.09，插件相关信息：https://www.cssplus.org</p>
       </div>
     </div>
   </div>

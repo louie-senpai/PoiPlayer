@@ -68,7 +68,7 @@ function PoiPlayer_bar(){
         </label>
       </form>
       <?php endif; ?>
-      <span class="poi-list-close" style="<?php if($poi['searchide'] == '0') echo 'display: block' ?>"><i class="poifont">&#xe60b;</i></span>
+      <span class="poi-list-close" style="<?php if($poi['searchide'] != '0') echo 'display: block' ?>"><i class="poifont">&#xe60b;</i></span>
     </div>
     <div id="poi-playlist"><ul></ul></div>
     <div id="poi-lrc" class="poi-lrc-c">
