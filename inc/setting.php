@@ -20,7 +20,7 @@ function poi_setting(){
 function poi_player_options_code(){ ?>
   <div id="poi-player-body">
     <div class="poi-player-center">
-      <h2>POI PLAYER V2.0.5</h2>
+      <h2>POI PLAYER V2.0.6</h2>
       <div class="poi-search-box">
         <form action="<?php echo $_SERVER["REQUEST_URI"]; ?>" method="post">
           <select id="music-type" name="select">
