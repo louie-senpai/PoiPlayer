@@ -1,9 +1,4 @@
 <?php
-/**
- * Theme player api analysis function file
- * @package Louie
- * @since Theme version 1.0.8
- */
 require 'Meting.php';
 use Metowolf\Meting;
 define('SOURCE', 'netease');
@@ -133,7 +128,6 @@ function get_jsons( $id, $type ) {
                 'album' => $song->album,
                 'pid' => $song->pic_id,
                 'mid' => $song->id,
-                'source' => $song->source,
                 'lrc' => $lrc
                 )
             );
