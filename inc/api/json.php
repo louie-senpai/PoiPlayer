@@ -1,151 +1,147 @@
 <?php
-/*
- * http://blog.csdn.net/fdipzone/article/details/28766357
+/**
+ * Theme player api analysis function file
+ * @package Louie
+ * @since Theme version 1.0.8
  */
+require 'Meting.php';
+use Metowolf\Meting;
+define('SOURCE', 'netease');
 
-function jsonFormat($data, $indent=null){  
-  
-    // 对数组中每个元素递归进行urlencode操作，保护中文字符  
-    array_walk_recursive($data, 'jsonFormatProtect');  
-  
-    // json encode  
-    $data = json_encode($data);  
-  
-    // 将urlencode的内容进行urldecode  
-    $data = urldecode($data);  
-  
-    // 缩进处理  
-    $ret = '';  
-    $pos = 0;  
-    $length = strlen($data);  
-    $indent = isset($indent)? $indent : '    ';  
-    $newline = "\n";  
-    $prevchar = '';  
-    $outofquotes = true;  
-  
-    for($i=0; $i<=$length; $i++){  
-  
-        $char = substr($data, $i, 1);  
-  
-        if($char=='"' && $prevchar!='\\'){  
-            $outofquotes = !$outofquotes;  
-        }elseif(($char=='}' || $char==']') && $outofquotes){  
-            $ret .= $newline;  
-            $pos --;  
-            for($j=0; $j<$pos; $j++){  
-                $ret .= $indent;  
-            }  
-        }  
-  
-        $ret .= $char;  
-          
-        if(($char==',' || $char=='{' || $char=='[') && $outofquotes){  
-            $ret .= $newline;  
-            if($char=='{' || $char=='['){  
-                $pos ++;  
-            }  
-  
-            for($j=0; $j<$pos; $j++){  
-                $ret .= $indent;  
-            }  
-        }  
-  
-        $prevchar = $char;  
-    }
-  
-    return $ret;  
-}  
-  
-/** 将数组元素进行urlencode 
-* @param String $val 
-*/  
-function jsonFormatProtect(&$val){  
-    if($val!==true && $val!==false && $val!==null){  
-        $val = urlencode($val);  
-    }  
-}  
-
-function get_jsons($id,$type){
-    $data = array();
-    switch ($type) {
-    case 1:
-        $data = netease_playlist($id);
-        break;
-    case 2:
-        $data = netease_album($id);
-        break;
-    }
-    $data = $data['songs'];
-    //var_dump($data);
-    $has_tag = '';
-    if($data){
-        foreach ($data as $k => $v) {
-            if($v['collect_tags']){
-                $has_tag = $v['collect_tags'];
-            }else{
-                $has_tag = '暂无标签';
+/**
+ * jsonFormat
+ */
+function jsonFormat( $data, $indent = null ) {
+    array_walk_recursive($data, 'jsonFormatProtect');
+    $data = json_encode($data);
+    $data = urldecode($data);
+    $ret = '';
+    $pos = 0;
+    $length = strlen($data);
+    $indent = isset($indent)? $indent : '    ';
+    $newline = "\n";
+    $prevchar = '';
+    $outofquotes = true;
+    for($i=0; $i<=$length; $i++){
+        $char = substr($data, $i, 1);
+        if($char=='"' && $prevchar!='\\'){
+            $outofquotes = !$outofquotes;
+        }elseif(($char=='}' || $char==']') && $outofquotes){
+            $ret .= $newline;
+            $pos --;
+            for($j=0; $j<$pos; $j++){
+                $ret .= $indent;
             }
-            $lrc = POI_URL.'/inc/lrc.php?id='.$v['song_id'].'';
-            $json .= jsonFormat(
-                        array(
-                            'album' => $v['song_sheet'], 
-                            'list' => array(
-                                'title' =>$v['song_title'], 
-                                'artist' => $v['song_author'], 
-                                'cover' => $v['song_cover'].'?param=300x300', 
-                                'id' => $v['song_id'], 
-                                'lrc' => $lrc
-                                ), 
-                            'tags' => $has_tag
-                        )
-                    );
-
-            $json .=','; 
-
-            //重新设计JSON结构 20160922 @Louie
         }
+        $ret .= $char;
+        if(($char==',' || $char=='{' || $char=='[') && $outofquotes){
+            $ret .= $newline;
+            if($char=='{' || $char=='['){
+                $pos ++;
+            }
+            for($j=0; $j<$pos; $j++){
+                $ret .= $indent;
+            }
+        }
+        $prevchar = $char;
+    }
+    return $ret;
+}  
+  
+/**
+ * 数组urlencode
+ */
+function jsonFormatProtect( $val ){
+    if($val!==true && $val!==false && $val!==null){
+        $val = urlencode($val);
+    }
+}
+
+/**
+* MP3链接
+* 返回 url
+*/
+function song( $id ) {
+    $API = new Meting(SOURCE);
+    $result = $API->format(true)->url($id);
+    $data = json_decode($result);
+    $url = str_replace('http://', 'https://', $data->url);
+    if (strstr($url, 'm7c')) {
+        $url = str_replace('https://m7c', 'https://m8', $url);
+    }
+    elseif(strstr($url, 'm8c')) {
+        $url = str_replace('https://m8c', 'https://m8', $url);
+    }
+    
+    return $url;
+}
+
+/**
+* 专辑图片
+* 返回 url
+*/
+function cover( $id ) {
+    $API = new Meting(SOURCE);
+    $result = $API->format(true)->pic($id);
+    $data = json_decode($result);
+
+    return $data->url;
+}
+
+/**
+* 歌单
+* 返回 id, name, artist, pic_id
+*/
+function data_playlist( $id, $source ) {
+    $API = new Meting($source);
+    $result = json_decode( $API->format(true)->playlist($id) );
+
+    return $result;
+}
+
+/**
+* 专辑
+* 返回 id, name, artist, pic_id
+*/
+function data_album( $id, $source ) {
+    $API = new Meting($source);
+    $result = json_decode( $API->format(true)->album($id) );
+
+    return $result;
+}
+
+/**
+ * 输出JSON
+ */  
+function get_jsons( $id, $type ) {
+    switch ( $type ) {
+        case 1:
+            $data = data_playlist($id, SOURCE);
+            break;
+        case 2:
+            $data = data_album($id, SOURCE);
+            break;
+    }
+    $json = '';
+    if ( !empty($data) ) {
+        foreach ($data as $key => $song) {
+            $lrc = POI_URL.'/inc/lrc.php?id='.$song->id;
+            $json .= jsonFormat(
+                array(
+                'title' =>$song->name,
+                'artist' => $song->artist[0],
+                'album' => $song->album,
+                'pid' => $song->pic_id,
+                'mid' => $song->id,
+                'source' => $song->source,
+                'lrc' => $lrc
+                )
+            );
+            $json .=',';
+        }
+
         return $json;
     }
 
-    return '非法操作，请检查ID或类型是否存在错误。';
-    
-}
-
-
-/*音乐搜索*/
-function get_search_jsons($input){
-    $poi = get_option('poi_options');
-    $search_num = $poi['searchnum'] ? $poi['searchnum'] : '20';
-    if($search_num >= 100){
-        $search_num = '100';
-    }
-    $list = array();
-    $list = music_search($input, $search_num);
-    $cd = POI_URL.'/build/images/cd-2.png';
-    $search = '';
-    if($list){
-        foreach ($list as $key => $val) {
-        $lrc = POI_URL.'/inc/lrc.php?id='.$val['song_id'].'';
-        $search .= jsonFormat(
-                    array(
-                        'search' => $input,
-                        'list' => array(
-                        'title' =>$val['song_title'], 
-                        'artist' => $val['song_author'], 
-                        'cover' => $val['song_cover'].'?param=300x300', 
-                        'mp3' => $val['song_src'],
-                        'download' => $val['song_down_src'], 
-                        'lrc' => $lrc,
-                        'mvid' => $val['song_mv'],
-                        'cd' => $cd
-                        )
-                    )
-                );
-
-            $search .=',';
-        }
-        return $search;
-    }
-
-    return false;  
+    return '检查ID和类型。';
 }

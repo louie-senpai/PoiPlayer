@@ -11,15 +11,13 @@ function poi_demo(){
   //默认数据
   $demo = '
   {
-    "album":"蜜汁路易",
-    "list":{
-        "title":"Smash",
-        "artist":"Tone Damli Aaberge",
-        "cover":"https://p1.music.126.net/n_zH2qFGHsiAORK9t-mgpw==/6670737046271416.jpg?param=300x300",
-        "id":"29378602",
-        "lrc":"'.POI_URL.'/inc/lrc.php?id=29378602"
-    },
-    "tags":"暂无标签"
+    "title":"Here Workin (Dinka Remix & Syntheticsax Bootleg)",
+    "artist":"Leventina",
+    "album":"Here workin",
+    "pid":"7796636952938175",
+    "mid":30870017,
+    "source":"netease",
+    "lrc":"'.POI_URL.'/inc/lrc.php?id=30870017"
 }';
 
   return $demo;
