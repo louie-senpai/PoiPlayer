@@ -8,9 +8,11 @@ $content = file_get_contents($getjson);
 preg_match('|"lyric":"(.+)"|U', $content, $matches);
 if(!$matches[1]){
 	$lrc = '[00:00.500]暂无歌词';
-}elseif(!strstr($matches[1],"[")){
+}
+elseif(!strstr($matches[1],"[")){
 	$lrc = '[00:00.500]歌词不支持滚动';
-}else{
+}
+else{
 	$lrc = $matches[1];
 }
 $lrc = str_replace('\n', "\n", $lrc);

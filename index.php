@@ -2,13 +2,13 @@
 /*
 Plugin Name: Poi Player
 Plugin URI: https://www.cssplus.org
-Description: 2.0.7 修复获取歌单异常的问题，网易是不是又在改API了？？？？？
+Description: 2.0.8 修复网易音乐API
 Author: 蜜汁路易(louie)
-Version: 2.0.7
+Version: 2.0.8
 Author URI: https://www.cssplus.org
 */
 
-define('POI_VERSION', '2.0.7');
+define('POI_VERSION', '2.0.8');
 define('POI_URL', plugins_url('', __FILE__));
 define('POI_PATH', dirname(__FILE__));
 
