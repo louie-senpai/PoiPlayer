@@ -1,0 +1,64 @@
+﻿#poi-player-body{
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  background: #f6f6f6;
+  position: relative;
+  margin: auto;
+}
+.poi-player-center{
+  padding: 25px;
+}
+.poi-player-center h2{
+  text-align: center;
+  padding-bottom: 30px;
+  color: #555;
+  font-weight: 600;
+  font-size: 26px;
+}
+.poi-search-box input{
+  line-height: 28px;
+  height: 28px;
+  vertical-align: middle;
+  width: 300px;
+  border-color: #ddd;
+}
+.poi-search-box .button{
+  width: 100px;
+  background: #fff;
+  box-shadow: none;
+  border-radius: 0;
+  vertical-align: middle;
+  border-color: #ddd;
+}
+.poi-search-box .button:hover{
+  background-color: #E67474;
+  border-color: #E67474;
+  color: #fff;
+}
+.poi-player-center .music-json{
+  width: 100%;
+  height: 300px;
+  padding: 10px;
+  margin: 20px 0;
+}
+.poi-other{
+  text-align: right;
+}
+.poi-other input{
+  margin-left: 15px;
+  border-radius: 100%;
+}
+.poi-other input.searchnum{
+  border-radius: 0;
+}
+.poi-player-center #message{
+  margin: 15px 0;
+}
+.poi-player-center .poi-ps{
+  margin: 20px 0 0;
+  width: 100%;
+}
+.poi-player-center hr{
+  margin: 20px 0;
+}
