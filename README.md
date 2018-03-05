@@ -1,7 +1,7 @@
 # PoiPlayer
 WordPress Plugins
 
-## 停更了，写个新的。
+## 停更了，写个新的[Eaplayer](https://github.com/0x0233/EaPlayer)。
 
 最新版本：2.0.9<br>
 更新摘要：<br>
